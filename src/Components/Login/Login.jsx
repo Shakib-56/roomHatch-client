@@ -13,7 +13,7 @@ const Login = () => {
 
     }
     return (
-  <div className='mx-auto max-w-7xl flex justify-center px-20'>
+  <div className='mx-auto max-w-7xl my-10 flex justify-center px-20'>
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div className="card-body">
         <h2 className='text-2xl text-center'>Login</h2>

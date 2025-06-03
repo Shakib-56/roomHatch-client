@@ -13,10 +13,9 @@ const handleSignUp=(e)=>{
         createUser(email,password).then(result=>console.log(result)).catch(error=>console.log(error));
 
 }
-   console.log(createUser);
     return (
         <div>
-            <div className='mx-auto max-w-7xl flex justify-center px-20'>
+            <div className='mx-auto my-10 max-w-7xl flex justify-center px-20'>
     <div className="card bg-base-100 w-full mt-3 max-w-sm shrink-0 shadow-2xl">
       <div className="card-body">
         <h2 className='text-2xl text-center'>SignUp</h2>

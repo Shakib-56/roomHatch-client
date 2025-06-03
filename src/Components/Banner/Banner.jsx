@@ -4,6 +4,8 @@ import bannerImage2 from "../../assets/roommates-spending-time-together.jpg"
 import bannerImage3 from "../../assets/happy-friends-smiling-camera.jpg"
 import bannerImage4 from "../../assets/side-view-roommates-spending-time-indoors.jpg"
 import { GoDotFill } from 'react-icons/go';
+      const linkClass = ({ isActive }) =>{return isActive ? " text-white font-semibold ": "text-gray-700 hover:text-red-500 px-3 py-2"};
+
 
 const Banner = () => {
     
@@ -12,15 +14,14 @@ const Banner = () => {
         //     <h1 className='text-3xl text-center max-w-7xl font-bold px-70'>No More Stranger Danger – Verified Profiles, Background Checks & Transparent Reviews for Roommates Who Pay Rent On Time.</h1>
         // </div>
         <div>
-  <div className="carousel relative w-full">
-  <div id="item1" className="carousel-item relative w-full">
-    <img
+  <div className="carousel  w-full h-screen ">
+  <div id="item1" className="carousel-item relative w-full ">
+      <img
       src={bannerImage}
-      className="w-full h-[600px] bg-cover" />
-
+      className="w-full h-[600px] bg-cover  " />    
       <div className='felx flex-col space-y-4 absolute left-20 top-60'>
         <h2 className='text-4xl text-white font-bold'>
-            Find Your Perfect Roommate Match
+            Find Your<span className='text-yellow-400 '> Perfect Roommate</span>  <br /> <span className='text-red-500'>Match</span>
         </h2>
         <p className='text-white text-2xl '>
             Safe, verified profiles with background checks for peace of mind
@@ -28,34 +29,35 @@ const Banner = () => {
         <button className='px-10 py-4 bg-red-600 text-white text-xl'>Browse Roommates</button>
       </div>
   </div>
-  <div id="item2" className="carousel-item relative w-full">
+  <div id="item2" className="carousel-item relative w-full h-screen ">
     <img
       src={bannerImage2}
       className="w-full h-[600px] bg-cover" />
       <div className='felx flex-col space-y-4 absolute left-20 top-60'>
-        <h2 className='text-4xl text-white font-bold'>
-            Compatibility That Matters
+        <h2 className='text-4xl text-yellow-400 font-bold'>
+           <span className='text-red-600'> Compatibility</span>  That Matters
         </h2>
         <p className='text-white text-2xl '>
-            Match based on lifestyle, habits, and preferences
+            Match based on lifestyle, habits, and preferences.
         </p>
         <button className='px-10 py-4 bg-red-600 text-white text-xl'>Browse Roommates</button>
       </div>
   </div>
-  <div id="item3" className="carousel-item relative w-full">
+  <div id="item3" className="carousel-item relative w-full h-screen bg-black  ">
+
     <img
       src={bannerImage3}
-      className="w-full h-[600px] bg-cover" />
+      className="w-full h-[600px] bg-cover " />
       <div className='felx flex-col space-y-4 absolute left-20 top-60'>
         <h2 className='text-4xl text-white font-bold'>
-            From Strangers to Friends
+            From <span  className='text-yellow-300'>Strangers</span>  To <span className='text-red-600'>Friends</span> 
         </h2>
         <p className='text-white text-2xl '>
         Thousands of successful matches and counting        </p>
         <button className='px-10 py-4 bg-red-600 text-white text-xl'>Browse Roommates</button>
       </div>
   </div>
-  <div id="item4" className="carousel-item relative w-full">
+  <div id="item4" className="carousel-item  relative w-full h-screen">
     <img
       src={bannerImage4}
       className="w-full h-[600px] bg-cover" />
@@ -71,11 +73,11 @@ const Banner = () => {
   </div>
 </div>
 <div className="absolute bottom-1 flex w-full justify-center gap-2 py-2">
-  <a href="#item1" className="text-gray-200 rounded-full"><GoDotFill />
+  <a href="#item1" className={`text-gray-200 rounded-full ${linkClass}`}><GoDotFill />
 </a>
-  <a href="#item2" className="text-gray-200 rounded-full"><GoDotFill /></a>
-  <a href="#item3" className="text-gray-200 rounded-full"><GoDotFill /></a>
-  <a href="#item4" className="text-gray-200 rounded-full"><GoDotFill /></a>
+  <a href="#item2" className={`text-gray-200 rounded-full ${linkClass}`}><GoDotFill /></a>
+  <a href="#item3" className={`text-gray-200 rounded-full ${linkClass}` }><GoDotFill /></a>
+  <a href="#item4" className={`text-gray-200 rounded-full ${linkClass}`}><GoDotFill /></a>
 </div>
         </div>
       

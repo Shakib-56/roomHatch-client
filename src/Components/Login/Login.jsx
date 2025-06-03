@@ -1,15 +1,21 @@
 import { Link } from 'react-router';
 import { use } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
+import { useNavigate } from 'react-router';
 
 const Login = () => {
   const {signInUser}=use(AuthContext)
+  const navigate=useNavigate();
     const handleLogin=(e)=>{
         e.preventDefault();
         const email=e.target.email.value;
         const password=e.target.password.value;
         // login user 
-        signInUser(email,password).then(result=>console.log(result)).then(error=>console.log(error));
+        signInUser(email,password)
+        .then(result=>{
+          navigate("/add-roommate")
+          console.log(result)})
+          .then(error=>console.log(error));
 
     }
     return (
@@ -25,7 +31,7 @@ const Login = () => {
           <div><a className="link link-hover">Forgot password?</a></div>
           <button className="btn btn-neutral mt-4">Login</button>
         </form>
-        <p >New user here .Please <Link className='text-blue-500 underline' to={"/register"}>Register</Link></p>
+        <p >New user here .Please <Link className='text-blue-500 underline' to={"/signUp"}>SignUp</Link></p>
       </div>
     </div>
 </div>

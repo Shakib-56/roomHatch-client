@@ -1,17 +1,31 @@
 import React from 'react';
 import { NavLink } from 'react-router';
-import logo from "../../assets/logo1.png"
+import logo from "../../assets/logo1-bg-remove.png"
 import { RxHamburgerMenu } from 'react-icons/rx';
+import { use } from 'react';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Navbar = () => {
+  const {user,signOutUser}=use(AuthContext);
+  console.log(user);
+  const handleSignOut=()=>{
+    signOutUser().then(()=>{
+      console.log("sign out successful");
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
  
       const linkClass = ({ isActive }) =>{return isActive ? "text-white btn bg-red-500  font-semibold underline  px-3 py-2": "text-gray-700 hover:text-blue-500 px-3 py-2"};
     const navLinks=<>
     <NavLink className={linkClass} to="/">Home</NavLink>
-    <NavLink className={linkClass} to="/add-roommate">Add Roommate</NavLink>
     <NavLink className={linkClass} to="/browse">Browse Listing</NavLink>
-    <NavLink className={linkClass} to="/my-listings">My Listing</NavLink>
-
+    {
+      user && <>
+      <NavLink className={linkClass} to="/add-roommate">Add Roommate</NavLink>
+      <NavLink className={linkClass} to="/my-listings">My Listing</NavLink>
+      </>
+    }
 
 
     
@@ -39,7 +53,19 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className=" p-4 lg:px-10  text-lg rounded  py-4 bg-red-600 text-white">SignUp</a>
+    {
+      user?<>
+       <div>
+        <img src={user.photoURL} alt="" />
+       </div>
+        <a onClick={handleSignOut} className='btn bg-red-600 text-white'>SignOut</a>
+      </>:
+      <div className='space-x-3'>
+      <NavLink to={"/login"} className=" p-4 lg:px-10  text-lg rounded  py-4 bg-red-600 text-white">Login</NavLink>
+       <NavLink to={"/signUp"} className=" p-4 lg:px-10  text-lg rounded  py-4 bg-red-600 text-white">SignUp</NavLink>
+      </div>
+
+    }
   </div>
 </div>
     );

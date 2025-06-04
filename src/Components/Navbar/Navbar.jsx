@@ -31,11 +31,11 @@ const Navbar = () => {
     
     </>
     return (
-        <div className="navbar  lg:px-20 bg-base-100 shadow-sm">
-  <div className="flex md:items-center justify-between gap-4">
+        <div className="navbar px-2 gap-2  md:px-20 bg-base-100 shadow-sm">
+  <div className="flex items-center md:items-center justify-center md:justify-between gap-2 md:gap-4">
     <div className="dropdown items-center">
-      <div tabIndex={0} role="button" className="btn mt-5 lg:hidden">
-        <RxHamburgerMenu />
+      <div tabIndex={0} role="button" className="btn mt-2 lg:hidden text-red-600 border-1 border-red-600">
+        <RxHamburgerMenu size={20}/>
 
       </div>
       <ul
@@ -45,7 +45,7 @@ const Navbar = () => {
         
       </ul>
     </div>
-    <NavLink to={"/"} className="p-4 lg:h-20 lg:w-[300px] text-xl"> <img src={logo} alt="" /></NavLink>
+    <NavLink to={"/"} className="lg:h-20 lg:w-[300px] text-xl"> <img src={logo} alt="" /></NavLink>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className=" md:ml-20 text-sm font-semibold space-x-3 px-1">
@@ -61,8 +61,8 @@ const Navbar = () => {
         <a onClick={handleSignOut} className='btn bg-red-600 text-white'>SignOut</a>
       </div>:
       <div className='space-x-3'>
-      <NavLink to={"/login"} className=" p-4 lg:px-10  text-lg rounded  py-4 bg-red-600 text-white">Login</NavLink>
-       <NavLink to={"/signUp"} className=" p-4 lg:px-10  text-lg rounded  py-4 bg-red-600 text-white">SignUp</NavLink>
+      <NavLink to={"/login"} className=" px-4 lg:px-10  text-lg rounded py-2 md:py-4 bg-red-600 text-white">Login</NavLink>
+       <NavLink to={"/signUp"} className=" px-4  lg:px-10  text-lg rounded py-2 md:py-4 bg-red-600 text-white">SignUp</NavLink>
       </div>
 
     }

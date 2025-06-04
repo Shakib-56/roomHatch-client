@@ -14,33 +14,38 @@ const Banner = () => {
         //     <h1 className='text-3xl text-center max-w-7xl font-bold px-70'>No More Stranger Danger – Verified Profiles, Background Checks & Transparent Reviews for Roommates Who Pay Rent On Time.</h1>
         // </div>
         <div>
-  <div className="carousel  w-full h-screen ">
+  <div className="carousel  w-full md:h-screen ">
   <div id="item1" className="carousel-item relative w-full ">
       <img
       src={bannerImage}
       className="w-full h-[600px] bg-cover  " />    
-      <div className='felx flex-col space-y-4 absolute left-20 top-60'>
-        <h2 className='text-4xl text-white font-bold'>
+      <div className='felx flex-col space-y-4 absolute items-center justify-center md:justify-start  md:items-start md:left-20 md:top-60 top-30'>
+        <h2 className='text-4xl text-white text-center md:text-start pb-5  font-bold'>
             Find Your<span className='text-yellow-400 '> Perfect Roommate</span>  <br /> <span className='text-red-500'>Match</span>
         </h2>
-        <p className='text-white text-2xl '>
+        <p className='text-white text-2xl text-center md:text-start '>
             Safe, verified profiles with background checks for peace of mind
         </p>
-        <button className='px-10 py-4 bg-red-600 text-white text-xl'>Browse Roommates</button>
+        <div className=' flex md:items-start items-center justify-center md:justify-start '>
+          <button className='px-4 md:px-10 py-4 bg-red-600 text-white  text-xl'>Browse Roommates</button>
+        </div>
+        
       </div>
   </div>
   <div id="item2" className="carousel-item relative w-full h-screen ">
     <img
       src={bannerImage2}
       className="w-full h-[600px] bg-cover" />
-      <div className='felx flex-col space-y-4 absolute left-20 top-60'>
-        <h2 className='text-4xl text-yellow-400 font-bold'>
+      <div className='felx flex-col space-y-4 absolute items-center justify-center md:justify-start  md:items-start md:left-20 md:top-60 top-30 '>
+        <h2 className='text-4xl text-white text-center md:text-start pb-5  font-bold'>
            <span className='text-red-600'> Compatibility</span>  That Matters
         </h2>
-        <p className='text-white text-2xl '>
+        <p className='text-white text-2xl text-center md:text-start px-4 '>
             Match based on lifestyle, habits, and preferences.
         </p>
-        <button className='px-10 py-4 bg-red-600 text-white text-xl'>Browse Roommates</button>
+        <div className=' flex md:items-start items-center justify-center md:justify-start'>
+          <button className='px-4 md:px-10 py-4 bg-red-600 text-white  text-center text-xl'>Browse Roommates</button>
+        </div>
       </div>
   </div>
   <div id="item3" className="carousel-item relative w-full h-screen bg-black  ">
@@ -48,13 +53,15 @@ const Banner = () => {
     <img
       src={bannerImage3}
       className="w-full h-[600px] bg-cover " />
-      <div className='felx flex-col space-y-4 absolute left-20 top-60'>
-        <h2 className='text-4xl text-white font-bold'>
+      <div className='felx flex-col space-y-4 absolute items-center justify-center md:justify-start  md:items-start md:left-20 md:top-60 top-30'>
+        <h2 className='text-4xl text-white text-center md:text-start pb-5  font-bold'>
             From <span  className='text-yellow-300'>Strangers</span>  To <span className='text-red-600'>Friends</span> 
         </h2>
-        <p className='text-white text-2xl '>
+        <p className='text-white text-2xl text-center md:text-start px-4 '>
         Thousands of successful matches and counting        </p>
-        <button className='px-10 py-4 bg-red-600 text-white text-xl'>Browse Roommates</button>
+       <div className='flex md:items-start items-center justify-center md:justify-start'>
+          <button className='px-4 md:px-10 py-4 bg-red-600 text-white  text-center text-xl'>Browse Roommates</button>
+        </div>
       </div>
   </div>
   <div id="item4" className="carousel-item  relative w-full h-screen">
@@ -65,10 +72,12 @@ const Banner = () => {
         <h2 className='text-4xl text-white font-bold'>
             Stress-Free Living Starts Here
         </h2>
-        <p className='text-white text-2xl '>
+        <p className='text-white text-2xl text-center md:text-start px-4 '>
             Transparent reviews and reliable roommates
         </p>
-        <button className='px-10 py-4 bg-red-600 text-white text-xl'>Browse Roommates</button>
+        <div className='flex md:items-start items-center justify-center md:justify-start'>
+          <button className='px-4 md:px-10 py-4 bg-red-600 text-white  text-center text-xl'>Browse Roommates</button>
+        </div>
       </div>
   </div>
 </div>

@@ -22,11 +22,11 @@ const handleSignUp=(e)=>{
   };
     return (
         <div>
-            <div className='mx-auto my-10 max-w-7xl flex justify-center px-20'>
-    <div className="card bg-base-100 w-full mt-3 max-w-sm shrink-0 shadow-2xl">
+            <div className='mx-auto my-10 max-w-7xl flex justify-center px-6 md:px-20'>
+    <div className="card bg-base-100 w-full mt-3 max-w-sm shrink-0 shadow-sm border-1 border-red-600">
       <div className="card-body">
         <h2 className='text-2xl text-center'>SignUp</h2>
-        <form onSubmit={handleSignUp} className="fieldset mt-2">
+        <form onSubmit={handleSignUp} className="fieldset  mt-2">
             
           <label className="label">Name</label>
           <input type="text" name='name' className="input" placeholder="Enter your name" />
@@ -39,7 +39,7 @@ const handleSignUp=(e)=>{
         </form>
         <p className='text-center text-lg font-bold'>or</p>
         <div className='flex'>
-          <button onClick={()=>{handleGoogleSignup()}} className='px-20 cursor-pointer py-2 bg-base-200 w-full rounded flex items-center gap-2'><FcGoogle size={25} />SignUp with google</button>
+          <button onClick={()=>{handleGoogleSignup()}} className='px-13 md:px-20 cursor-pointer py-2 bg-base-200 w-full rounded flex items-center justify-center gap-2'><FcGoogle size={25} />SignUp with google</button>
         </div>
         <p >Already have an accoint  .Please <Link className='text-blue-500 underline' to={"/login"}>Login</Link></p>
       </div>

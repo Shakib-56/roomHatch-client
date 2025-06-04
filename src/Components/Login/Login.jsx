@@ -25,8 +25,8 @@ const Login = () => {
     }).then(err=>console.log(err));
   };
     return (
-  <div className='mx-auto max-w-7xl my-10 flex justify-center px-20'>
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+  <div className='mx-auto max-w-7xl my-10 flex justify-center px-6 md:px-20'>
+    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-sm border-1 border-red-600">
       <div className="card-body">
         <h2 className='text-2xl text-center'>Login</h2>
         <form onSubmit={handleLogin} className="fieldset">
@@ -39,7 +39,7 @@ const Login = () => {
         </form>
         <p className='text-center text-lg font-bold'>or</p>
                 <div className='flex'>
-                  <button onClick={()=>{handleGoogleSignup()}} className='px-20 cursor-pointer py-2 bg-base-200 w-full rounded flex items-center gap-2'><FcGoogle size={25} />SignUp with google</button>
+                  <button onClick={()=>{handleGoogleSignup()}} className='md:px-20 cursor-pointer py-2 bg-base-200 w-full rounded flex items-center justify-center gap-2'><FcGoogle size={25} />SignUp with google</button>
                 </div>
         <p >New user here .Please <Link className='text-blue-500 underline' to={"/signUp"}>SignUp</Link></p>
       </div>

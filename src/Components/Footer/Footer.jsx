@@ -12,7 +12,7 @@ const Footer = () => {
                 <NavLink className="flex  max-w-4xl  items-center justify-center gap-2 px-20 bg-white  rounded py-4 shadow-sm text-red-600" to={"/"}> Find roommate <FaArrowRight />
 </NavLink>
             </div>
-            <footer className="footer  px-20 bg-black sm:footer-horizontal  text-neutral-content p-10">
+            <footer className="footer px-6 py-4  md:px-20 bg-black sm:footer-horizontal  text-neutral-content md:p-10">
   <aside>
     <img className='h-15 max-w-80' src={logoFooter} alt="" />
     <p>

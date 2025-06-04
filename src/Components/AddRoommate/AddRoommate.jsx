@@ -1,6 +1,9 @@
 import React from 'react';
 import addRommateBg from "../../assets/add-roomate-2.png"
+import { use } from 'react';
+import { AuthContext } from '../../Context/AuthContext';
 const AddRoommate = () => {
+  const {user}=use(AuthContext)
   const handleAddRoommate=(e)=>{
     e.preventDefault();
     const form=e.target;
@@ -8,7 +11,15 @@ const AddRoommate = () => {
     const newRoommate=Object.fromEntries(formData.entries());
     console.log(newRoommate);
     //send data on server
-    fetch("")
+    fetch("http://localhost:3000/roommates",{
+      method:"POST",
+      headers:{
+        "content-type":"application/json"
+      },
+      body:JSON.stringify(newRoommate)
+    }).then(res=>res.json()).then(data=>{
+      console.log(data);
+    });
   }
     return (
         <div className='p-24 max-w-7xl mx-auto bg-white shadow-sm rounded-xl bg-no-repeat   my-10'>
@@ -27,7 +38,7 @@ const AddRoommate = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
         <fieldset className="fieldset p-2">
         <label className="label text-xl">Title</label>
-        <input type="text" className="input w-full border " name='name' placeholder= {`(e.g., "Looking for a roommate in NYC"`} />
+        <input type="text" className="input w-full border " name='title' placeholder= {`(e.g., "Looking for a roommate in NYC"`} />
         </fieldset>
         <fieldset className="fieldset  p-2">
         <label className="label  text-xl">Location</label>
@@ -71,7 +82,7 @@ const AddRoommate = () => {
         </fieldset>
         <fieldset className="fieldset p-2">
         <label className="label text-xl">Email</label>
-        <input type="email" className="input w-full border " name='email' placeholder= "Enter your email" readOnly  required />
+        <input type="email" className="input w-full border " name='email' placeholder={`${user.email}`} readOnly  required />
         </fieldset>
          <fieldset className="fieldset p-2">
         <label className="label text-xl">Name</label>

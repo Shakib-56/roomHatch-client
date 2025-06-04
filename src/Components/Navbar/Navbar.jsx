@@ -54,12 +54,12 @@ const Navbar = () => {
   </div>
   <div className="navbar-end">
     {
-      user?<>
+      user?<div className='flex items-center gap-4'>
        <div>
-        <img src={user.photoURL} alt="" />
+        <img className='rounded-4xl  h-15' src={user.photoURL} alt="" />
        </div>
         <a onClick={handleSignOut} className='btn bg-red-600 text-white'>SignOut</a>
-      </>:
+      </div>:
       <div className='space-x-3'>
       <NavLink to={"/login"} className=" p-4 lg:px-10  text-lg rounded  py-4 bg-red-600 text-white">Login</NavLink>
        <NavLink to={"/signUp"} className=" p-4 lg:px-10  text-lg rounded  py-4 bg-red-600 text-white">SignUp</NavLink>

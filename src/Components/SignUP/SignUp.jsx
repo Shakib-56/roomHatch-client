@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router';
 import { use } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
+import { FcGoogle } from 'react-icons/fc';
 
 const SignUp = () => {
-const {createUser}=use(AuthContext)
+const {createUser,SignInWithGoogle,setUser}=use(AuthContext)
 const handleSignUp=(e)=>{
      e.preventDefault();
         const name=e.target.name.value;
@@ -12,7 +13,13 @@ const handleSignUp=(e)=>{
         const password=e.target.password.value;
         createUser(email,password).then(result=>console.log(result)).catch(error=>console.log(error));
 
+
 }
+ const handleGoogleSignup = async () => {
+    SignInWithGoogle().then(result=> {
+      setUser(result.user)
+    }).then(err=>console.log(err));
+  };
     return (
         <div>
             <div className='mx-auto my-10 max-w-7xl flex justify-center px-20'>
@@ -30,6 +37,10 @@ const handleSignUp=(e)=>{
           <div><a className="link link-hover">Forgot password?</a></div>
           <button className="btn btn-neutral mt-4">SignUp now</button>
         </form>
+        <p className='text-center text-lg font-bold'>or</p>
+        <div className='flex'>
+          <button onClick={()=>{handleGoogleSignup()}} className='px-20 cursor-pointer py-2 bg-base-200 w-full rounded flex items-center gap-2'><FcGoogle size={25} />SignUp with google</button>
+        </div>
         <p >Already have an accoint  .Please <Link className='text-blue-500 underline' to={"/login"}>Login</Link></p>
       </div>
     </div>

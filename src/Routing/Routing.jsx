@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         },
         {
            path:"my-listings",
-           element:<PrivateRoute><Mylistings></Mylistings><AddRoommate></AddRoommate></PrivateRoute>
+           element:<PrivateRoute><Mylistings></Mylistings></PrivateRoute>
         }
     ]
   },

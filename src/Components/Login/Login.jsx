@@ -1,28 +1,40 @@
 import { Link } from 'react-router';
-import { use } from 'react';
+import { use, useState } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router';
 import { FcGoogle } from 'react-icons/fc';
+import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 
 const Login = () => {
+  const [errorMessage,setErrorMessage]=useState(" ");
+    const [showPassword,setShowPassword]=useState(false);
+
   const {signInUser,SignInWithGoogle,setUser}=use(AuthContext)
   const navigate=useNavigate();
     const handleLogin=(e)=>{
         e.preventDefault();
         const email=e.target.email.value;
         const password=e.target.password.value;
+        //pass validation
+        setErrorMessage(" ");
+        // password validation
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        if(passwordRegex.test(password)===false){
+          setErrorMessage("Password must have one lowercase,one uppercase,one degit and 6 character or longer");
+          return ;
+        }
         // login user 
         signInUser(email,password)
         .then(result=>{
           navigate("/add-roommate")
           console.log(result)})
-          .then(error=>console.log(error));
+          .then(error=>setErrorMessage(error.message));
 
     }
     const handleGoogleSignup = async () => {
     SignInWithGoogle().then(result=> {
       setUser(result.user)
-    }).then(err=>console.log(err));
+    }).then(err=>setErrorMessage(err.message));
   };
     return (
   <div className='mx-auto max-w-7xl my-10 flex justify-center px-6 md:px-20'>
@@ -32,9 +44,18 @@ const Login = () => {
         <form onSubmit={handleLogin} className="fieldset">
           <label className="label">Email</label>
           <input type="email" name='email' className="input" placeholder="Email" />
-          <label className="label">Password</label>
-          <input type="password" name="password" className="input" placeholder="Password" />
+          <div className='relative'>
+            <label className="label">Password</label>
+          <input type={showPassword ? "text":"password"} name="password" className="input" placeholder="Password" />
+             <button 
+            onClick={()=>{setShowPassword(!showPassword)}}
+            className='absolute right-6 top-6 btn btn-xs'>
+              {showPassword?<FaEye></FaEye>:<FaEyeSlash></FaEyeSlash>}
+          </button>
+          </div>
+          
           <div><a className="link link-hover">Forgot password?</a></div>
+          {errorMessage && <p className='text-red-600'>{errorMessage}</p>}
           <button className="btn btn-neutral mt-4">Login</button>
         </form>
         <p className='text-center text-lg font-bold'>or</p>

@@ -4,13 +4,18 @@ import logo from "../../assets/logo1-bg-remove.png"
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { use } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
   const {user,signOutUser}=use(AuthContext);
   console.log(user);
   const handleSignOut=()=>{
     signOutUser().then(()=>{
-      console.log("sign out successful");
+      Swal.fire({
+      title: "Sign out successfull!",
+       icon: "success",
+      draggable: true
+      });
     }).catch(error=>{
       console.log(error);
     })

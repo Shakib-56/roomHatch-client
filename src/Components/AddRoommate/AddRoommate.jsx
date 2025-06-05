@@ -4,6 +4,7 @@ import { use } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 const AddRoommate = () => {
   const {user}=use(AuthContext)
+  console.log(user);
   const handleAddRoommate=(e)=>{
     e.preventDefault();
     const form=e.target;
@@ -18,7 +19,8 @@ const AddRoommate = () => {
       },
       body:JSON.stringify(newRoommate)
     }).then(res=>res.json()).then(data=>{
-      console.log(data);
+      console.log(data.insertedId);
+
     });
   }
     return (
@@ -82,16 +84,17 @@ const AddRoommate = () => {
         </fieldset>
         <fieldset className="fieldset p-2">
         <label className="label text-xl">Email</label>
-        <input type="email" className="input w-full border " name='email' placeholder={`${user.email}`} readOnly  required />
+        <input type="email" className="input w-full border " name='email' value={user.email} readOnly  required />
         </fieldset>
          <fieldset className="fieldset p-2">
         <label className="label text-xl">Name</label>
-        <input type="text" className="input w-full border " name='name' placeholder= "Enter your name" readOnly  required/>
+        <input type="text" className="input w-full border " name='name' placeholder= "Enter your name" value={user.displayName} readOnly />
         </fieldset>
          <fieldset className="fieldset  p-2">
         <label className="label text-xl">Photo</label>
         <input type="text" className="input w-full border"
          placeholder="Enter photo URL"
+         defaultValue={user.photoURL}
          name='photo' />
         </fieldset>
 

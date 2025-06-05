@@ -5,17 +5,40 @@ import { AuthContext } from '../../Context/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
   const [errorMessage,setErrorMessage]=useState("");
   const [showPassword,setShowPassword]=useState(false);
 
-const {createUser,SignInWithGoogle,setUser}=use(AuthContext)
+const {createUser,SignInWithGoogle,setUser,user}=use(AuthContext);
+console.log(user);
 const handleSignUp=(e)=>{
      e.preventDefault();
         const name=e.target.name.value;
         const email=e.target.email.value;
         const password=e.target.password.value;
+
+        const form=e.target;
+        const formData=new FormData(form);
+        const newUser=Object.fromEntries(formData.entries());
+        console.log(newUser);
+        // create user
+        fetch("http://localhost:3000/users",{
+          method:"POST",
+          headers:{
+            "content-type":"application/json"
+          },
+          body:JSON.stringify(newUser)
+        }).then(res=>res.json()).then(data=>{
+          if(data.insertedId){
+            Swal.fire({
+            title: "Congrates you had successfully created an account!",
+          icon: "success",
+          draggable: true
+                        });
+          }
+        });
         setErrorMessage(" ");
         // password validation
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
@@ -31,7 +54,30 @@ const handleSignUp=(e)=>{
 }
  const handleGoogleSignup = async () => {
     SignInWithGoogle().then(result=> {
-      setUser(result.user)
+          const googleUser = result.user;
+           const newUser = {
+            name: googleUser.displayName,
+            email: googleUser.email,
+            photoURL: googleUser.photoURL,
+    };
+      fetch("http://localhost:3000/users",{
+         method:"POST",
+          headers:{
+            "content-type":"application/json"
+          },
+          body:JSON.stringify(newUser)
+        }).then(res=>res.json()).then(data=>{
+          if(data.insertedId){
+            Swal.fire({
+            title: "Congrates you had successfully created an account!",
+          icon: "success",
+          draggable: true
+                        });
+          }
+      })
+
+      setUser(newUser);
+
     }).then(err=>console.log(err));
   };
     return (
@@ -46,6 +92,8 @@ const handleSignUp=(e)=>{
           <input type="text" name='name' className="input" placeholder="Enter your name" />
           <label className="label">Email</label>
           <input type="email" name='email' className="input" placeholder="Email" />
+          <label className="label">Photo</label>
+          <input type="text" name='photoURL' className="input" placeholder="Enter your photo URL" />
           <div className='relative'>
             <label className="label">Password</label>
             <input type={showPassword ? "text":"password"} name='password' className="input" placeholder="Password" />

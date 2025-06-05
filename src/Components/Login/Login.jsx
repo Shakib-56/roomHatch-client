@@ -33,6 +33,7 @@ const Login = () => {
     }
     const handleGoogleSignup = async () => {
     SignInWithGoogle().then(result=> {
+      navigate("/add-roommate")
       setUser(result.user)
     }).then(err=>setErrorMessage(err.message));
   };

@@ -14,11 +14,11 @@ const Banner = () => {
         //     <h1 className='text-3xl text-center max-w-7xl font-bold px-70'>No More Stranger Danger – Verified Profiles, Background Checks & Transparent Reviews for Roommates Who Pay Rent On Time.</h1>
         // </div>
         <div>
-  <div className="carousel  w-full md:h-screen ">
-  <div id="item1" className="carousel-item relative w-full ">
+  <div className="carousel  w-full md:min-h-screen ">
+  <div id="item1" className="carousel-item relative w-full h-full ">
       <img
       src={bannerImage}
-      className="w-full h-[600px] bg-cover  " />    
+      className="w-full object-cover h-[600px] md:h-[650px] bg-cover  " />    
       <div className='felx flex-col space-y-4 absolute items-center justify-center md:justify-start  md:items-start md:left-20 md:top-60 top-30'>
         <h2 className='text-4xl text-white text-center md:text-start pb-5  font-bold'>
             Find Your<span className='text-yellow-400 '> Perfect Roommate</span>  <br /> <span className='text-red-500'>Match</span>
@@ -32,11 +32,11 @@ const Banner = () => {
         
       </div>
   </div>
-  <div id="item2" className="carousel-item relative w-full h-screen ">
+  <div id="item2" className="carousel-item relative w-full h-full ">
     <img
       src={bannerImage2}
-      className="w-full h-[600px] bg-cover" />
-      <div className='felx flex-col space-y-4 absolute items-center justify-center md:justify-start  md:items-start md:left-20 md:top-60 top-30 '>
+      className="w-full object-cover h-[600px] md:h-[650px] bg-cover" />
+      <div className='flex flex-col space-y-4 absolute items-center justify-center md:justify-start  md:items-start md:left-20 md:top-60 top-30 '>
         <h2 className='text-4xl text-white text-center md:text-start pb-5  font-bold'>
            <span className='text-red-600'> Compatibility</span>  That Matters
         </h2>
@@ -48,12 +48,12 @@ const Banner = () => {
         </div>
       </div>
   </div>
-  <div id="item3" className="carousel-item relative w-full h-screen bg-black  ">
+  <div id="item3" className="carousel-item relative w-full h-full">
 
     <img
       src={bannerImage3}
-      className="w-full h-[600px] bg-cover " />
-      <div className='felx flex-col space-y-4 absolute items-center justify-center md:justify-start  md:items-start md:left-20 md:top-60 top-30'>
+      className="w-full  h-[600px] md:h-[650px] object-cover " />
+      <div className='flex flex-col space-y-4 absolute items-center justify-center md:justify-start  md:items-start md:left-20 md:top-60 top-30'>
         <h2 className='text-4xl text-white text-center md:text-start pb-5  font-bold'>
             From <span  className='text-yellow-300'>Strangers</span>  To <span className='text-red-600'>Friends</span> 
         </h2>
@@ -64,11 +64,11 @@ const Banner = () => {
         </div>
       </div>
   </div>
-  <div id="item4" className="carousel-item  relative w-full h-screen">
+  <div id="item4" className="carousel-item  relative w-full h-ful">
     <img
       src={bannerImage4}
-      className="w-full h-[600px] bg-cover" />
-      <div className=' felx flex-col space-y-4 absolute left-20 top-60'>
+      className="w-full h-[600px] md:h-[650px] md: object-cover" />
+      <div className=' flex flex-col space-y-4 absolute left-20 top-60'>
         <h2 className='text-4xl text-white font-bold'>
             Stress-Free Living Starts Here
         </h2>
@@ -81,7 +81,7 @@ const Banner = () => {
       </div>
   </div>
 </div>
-<div className="absolute bottom-1 flex w-full justify-center gap-2 py-2">
+<div className="absolute bottom-1 flex w-full justify-center gap-2 ">
   <a href="#item1" className={`text-gray-200 rounded-full ${linkClass}`}><GoDotFill />
 </a>
   <a href="#item2" className={`text-gray-200 rounded-full ${linkClass}`}><GoDotFill /></a>

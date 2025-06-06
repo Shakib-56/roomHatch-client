@@ -40,7 +40,7 @@ const Login = () => {
           .then((res) => res.json())
           .then((userDataFromDb) => {
             // Update Firebase displayName and photoURL
-            return updateProfile(auth.currentUser, {
+            return updateProfile(auth.currentUser,{
               displayName: userDataFromDb.name,
               photoURL: userDataFromDb.photoURL,
             }).then(() => {

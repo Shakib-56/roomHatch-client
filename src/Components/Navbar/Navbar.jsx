@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import logo from "../../assets/logo1-bg-remove.png"
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { use } from 'react';
@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 
 const Navbar = () => {
   const {user,signOutUser}=use(AuthContext);
+  const navigate=useNavigate();
   console.log(user);
   const handleSignOut=()=>{
     signOutUser().then(()=>{
@@ -16,6 +17,7 @@ const Navbar = () => {
        icon: "success",
       draggable: true
       });
+      navigate("/login");
     }).catch(error=>{
       console.log(error);
     })

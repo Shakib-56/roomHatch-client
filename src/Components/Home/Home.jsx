@@ -1,12 +1,12 @@
 import React from 'react';
-import Hero from '../ExttraSection/Hero';
 import Banner from '../Banner/Banner';
+import HowItWorks from '../ExtraSection/HowItWorks';
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <Hero></Hero>
+            <HowItWorks></HowItWorks>
         </div>
     );
 };

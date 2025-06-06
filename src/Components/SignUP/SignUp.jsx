@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { use } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 const SignUp = () => {
   const [errorMessage,setErrorMessage]=useState("");
   const [showPassword,setShowPassword]=useState(false);
+  const navigate=useNavigate();
 
 const {createUser,SignInWithGoogle,setUser,user}=use(AuthContext);
 console.log(user);
@@ -32,6 +33,7 @@ const handleSignUp=(e)=>{
           body:JSON.stringify(newUser)
         }).then(res=>res.json()).then(data=>{
           if(data.insertedId){
+              navigate("/");
             Swal.fire({
             title: "Congrates you had successfully created an account!",
           icon: "success",

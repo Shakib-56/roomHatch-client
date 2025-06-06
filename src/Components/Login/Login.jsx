@@ -4,70 +4,129 @@ import { AuthContext } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router';
 import { FcGoogle } from 'react-icons/fc';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
+import { updateProfile } from 'firebase/auth';
+import { auth } from '../../Authentication/firebase.init';
 
 const Login = () => {
-  const [errorMessage,setErrorMessage]=useState(" ");
-    const [showPassword,setShowPassword]=useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
-  const {signInUser,SignInWithGoogle,setUser}=use(AuthContext)
-  const navigate=useNavigate();
-    const handleLogin=(e)=>{
-        e.preventDefault();
-        const email=e.target.email.value;
-        const password=e.target.password.value;
-        //pass validation
-        setErrorMessage(" ");
-        // password validation
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-        if(passwordRegex.test(password)===false){
-          setErrorMessage("Password must have one lowercase,one uppercase,one degit and 6 character or longer");
-          return ;
-        }
-        // login user 
-        signInUser(email,password)
-        .then(result=>{
-          navigate("/add-roommate")
-          console.log(result)})
-          .then(error=>setErrorMessage(error.message));
+  const { signInUser, SignInWithGoogle, setUser } = use(AuthContext);
+  const navigate = useNavigate();
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    setErrorMessage('');
+
+    // Password validation
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      setErrorMessage(
+        'Password must have one lowercase, one uppercase, one digit, and be 6 characters or longer.'
+      );
+      return;
     }
-    const handleGoogleSignup = async () => {
-    SignInWithGoogle().then(result=> {
-      navigate("/add-roommate")
-      setUser(result.user)
-    }).then(err=>setErrorMessage(err.message));
+
+    // Sign in user
+    signInUser(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+
+        // Fetch user profile from database
+        fetch(`http://localhost:3000/users/${email}`)
+          .then((res) => res.json())
+          .then((userDataFromDb) => {
+            // Update Firebase displayName and photoURL
+            return updateProfile(auth.currentUser, {
+              displayName: userDataFromDb.name,
+              photoURL: userDataFromDb.photoURL,
+            }).then(() => {
+              // Set enriched user to context
+              const enrichedUser = {
+                ...loggedUser,
+                displayName: userDataFromDb.name,
+                photoURL: userDataFromDb.photoURL,
+              };
+              setUser(enrichedUser);
+              navigate('/add-roommate');
+            });
+          });
+      })
+      .catch((error) => setErrorMessage(error.message));
   };
-    return (
-  <div className='mx-auto max-w-7xl my-10 flex justify-center px-6 md:px-20'>
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-sm border-1 border-red-600">
-      <div className="card-body">
-        <h2 className='text-2xl text-center'>Login</h2>
-        <form onSubmit={handleLogin} className="fieldset">
-          <label className="label">Email</label>
-          <input type="email" name='email' className="input" placeholder="Email" />
-          <div className='relative'>
-            <label className="label">Password</label>
-          <input type={showPassword ? "text":"password"} name="password" className="input" placeholder="Password" />
-             <button 
-            onClick={()=>{setShowPassword(!showPassword)}}
-            className='absolute right-6 top-6 btn btn-xs'>
-              {showPassword?<FaEye></FaEye>:<FaEyeSlash></FaEyeSlash>}
-          </button>
+
+  const handleGoogleSignup = () => {
+    SignInWithGoogle()
+      .then((result) => {
+        setUser(result.user);
+        navigate('/add-roommate');
+      })
+      .catch((err) => setErrorMessage(err.message));
+  };
+
+  return (
+    <div className="mx-auto max-w-7xl my-10 flex justify-center px-6 md:px-20">
+      <div className="card bg-base-100 w-full max-w-sm shadow-sm border border-red-600">
+        <div className="card-body">
+          <h2 className="text-2xl text-center">Login</h2>
+          <form onSubmit={handleLogin}>
+            <label className="label">Email</label>
+            <input type="email" name="email" className="input" placeholder="Email" required />
+
+            <div className="relative">
+              <label className="label">Password</label>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                className="input"
+                placeholder="Password"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-6 top-6 btn btn-xs"
+              >
+                {showPassword ? <FaEye /> : <FaEyeSlash />}
+              </button>
+            </div>
+
+            <div>
+              <a className="link link-hover">Forgot password?</a>
+            </div>
+
+            {errorMessage && <p className="text-red-600">{errorMessage}</p>}
+
+            <button type="submit" className="btn btn-neutral mt-4 w-full">
+              Login
+            </button>
+          </form>
+
+          <p className="text-center text-lg font-bold my-2">or</p>
+
+          <div>
+            <button
+              onClick={handleGoogleSignup}
+              className="cursor-pointer py-2 bg-base-200 w-full rounded flex items-center justify-center gap-2"
+            >
+              <FcGoogle size={25} />
+              Sign Up with Google
+            </button>
           </div>
-          
-          <div><a className="link link-hover">Forgot password?</a></div>
-          {errorMessage && <p className='text-red-600'>{errorMessage}</p>}
-          <button className="btn btn-neutral mt-4">Login</button>
-        </form>
-        <p className='text-center text-lg font-bold'>or</p>
-                <div className='flex'>
-                  <button onClick={()=>{handleGoogleSignup()}} className='md:px-20 cursor-pointer py-2 bg-base-200 w-full rounded flex items-center justify-center gap-2'><FcGoogle size={25} />SignUp with google</button>
-                </div>
-        <p >New user here .Please <Link className='text-blue-500 underline' to={"/signUp"}>SignUp</Link></p>
+
+          <p className="text-center mt-4">
+            New user? Please{' '}
+            <Link className="text-blue-500 underline" to="/signUp">
+              Sign Up
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
-</div>
-    );
+  );
 };
 
 export default Login;

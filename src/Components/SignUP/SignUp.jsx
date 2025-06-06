@@ -6,6 +6,8 @@ import { FcGoogle } from 'react-icons/fc';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import Swal from 'sweetalert2';
+import { auth } from '../../Authentication/firebase.init';
+import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
   const [errorMessage,setErrorMessage]=useState("");
@@ -16,11 +18,11 @@ const {createUser,SignInWithGoogle,setUser,user}=use(AuthContext);
 console.log(user);
 const handleSignUp=(e)=>{
      e.preventDefault();
-        const name=e.target.name.value;
-        const email=e.target.email.value;
-        const password=e.target.password.value;
-
         const form=e.target;
+        const name=form.name.value;
+        const email=form.email.value;
+        const password=form.password.value
+        const photoURL=form.photoURL.value;
         const formData=new FormData(form);
         const newUser=Object.fromEntries(formData.entries());
         console.log(newUser);
@@ -34,6 +36,7 @@ const handleSignUp=(e)=>{
         }).then(res=>res.json()).then(data=>{
           if(data.insertedId){
               navigate("/");
+              setUser(newUser);
             Swal.fire({
             title: "Congrates you had successfully created an account!",
           icon: "success",
@@ -50,9 +53,15 @@ const handleSignUp=(e)=>{
         }
 
 
-        createUser(email,password).then(result=>console.log(result)).catch(error=>setErrorMessage(error.message));
+        createUser(email,password).then(result=>{
+      console.log(result);
+       updateProfile(auth.currentUser, {
+          displayName:name, photoURL:photoURL
+          })
+              
+        }).catch(error=>setErrorMessage(error.message));
 
-
+       
 }
  const handleGoogleSignup = async () => {
     SignInWithGoogle().then(result=> {

@@ -2,9 +2,13 @@ import React from 'react';
 import addRommateBg from "../../assets/add-roomate-2.png"
 import { use } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
+import { useLoaderData } from 'react-router';
 const AddRoommate = () => {
   const {user}=use(AuthContext)
   console.log(user);
+
+  
+  
   const handleAddRoommate=(e)=>{
     e.preventDefault();
     const form=e.target;

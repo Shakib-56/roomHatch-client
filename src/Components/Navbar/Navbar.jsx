@@ -5,6 +5,8 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { use } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import Swal from 'sweetalert2';
+import { FaSignOutAlt } from "react-icons/fa";
+
 
 const Navbar = () => {
   const {user,signOutUser}=use(AuthContext);
@@ -65,7 +67,9 @@ const Navbar = () => {
        <div>
         <img className='rounded-4xl  h-15' src={user.photoURL} alt="" />
        </div>
-        <a onClick={handleSignOut} className='btn bg-red-600 text-white'>SignOut</a>
+        <a onClick={handleSignOut} className='btn bg-red-600 text-white'>SignOut<FaSignOutAlt />
+
+</a>
       </div>:
       <div className='space-x-3'>
       <NavLink to={"/login"} className=" px-4 lg:px-10  text-lg rounded py-2 md:py-4 bg-red-600 text-white">Login</NavLink>

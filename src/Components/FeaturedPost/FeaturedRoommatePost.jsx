@@ -15,7 +15,7 @@ const FeaturedRoommatePost = ({roommates}) => {
     return (
         <div className='max-w-full  bg-cover bg-no-repeat'style={{backgroundImage:`url(${featuredPostBg})`}}>
              <section className="lg:py-10 px-4 lg:px-20 w-full max-auto">
-      <h2 className="text-3xl font-bold text-center bg-red-200 text-red-600 py-4 mb-6">Featured Roommates</h2>
+      <h2 className="text-4xl font-bold text-center  text-red-600 py-4 mb-6">Featured Roommates</h2>
       <div className="grid max-w-7xl space-y-3 mx-auto    grid-cols-1 lg:gap-4 md:grid-cols-2 lg:grid-cols-3">
         {roommateToShow.map((roommate) => (
           <FeaturedRoommateSinglePost key={roommate._id} roommate={roommate}></FeaturedRoommateSinglePost>

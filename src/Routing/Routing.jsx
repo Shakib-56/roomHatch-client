@@ -9,6 +9,7 @@ import BrowseListing from "../Components/BrowseListing/BrowseListing";
 import PrivateRoute from "./PrivateRoute";
 import AddRoommate from "../Components/AddRoommate/AddRoommate";
 import Mylistings from "../Components/MyListings/Mylistings";
+import RommateDetails from "../Components/RommateDetails/RommateDetails";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
         {
            path:"my-listings",
            element:<PrivateRoute><Mylistings></Mylistings></PrivateRoute>
+        },
+        {
+          path:"roommates/:id",
+          loader:({params})=>{
+            return fetch(`http://localhost:3000/roommates/${params.id}`)
+          },
+          Component:RommateDetails
+
         }
     ]
   },

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaBangladeshiTakaSign } from 'react-icons/fa6';
 import { TbCoinTakaFilled } from 'react-icons/tb';
+import { NavLink } from 'react-router';
 
 const FeaturedRoommateSinglePost = ({roommate}) => {
     const roomMateDescription=roommate.description.slice(0,120);
@@ -17,10 +18,10 @@ const FeaturedRoommateSinglePost = ({roommate}) => {
             <div className='p-2'>
              <h3 className="text-xl font-semibold mt-3 ">{roommate.name}</h3>
             <p className='text-sm font-bold text-gray-600'>{roommate.title}</p>
-            <p className="text-sm mt-2">{roomMateDescription}. . . . . .</p>
+            <p className="text-sm text-gray-700 mt-2">{roomMateDescription}. . . . . .</p>
             </div>
             <div className='py-2  px-2  text-center'>
-            <button className='px-20 py-4 w-full  bg-red-400 text-gray-100 rounded-4xl'>See more details...</button>
+            <NavLink to={`/roommates/${roommate._id}`} className='btn btn-ghost w-full  bg-red-400 text-gray-100 rounded-4xl'>See more details...</NavLink>
 
             </div>
            

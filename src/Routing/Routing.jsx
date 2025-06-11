@@ -38,16 +38,17 @@ const router = createBrowserRouter([
         },
         {
            path:"my-listings",
+           loader:()=>fetch(`http://localhost:3000/roommates`),
            element:<PrivateRoute><Mylistings></Mylistings></PrivateRoute>
         },
         {
-          path:"roommates/:id",
+          path:"/roommates/:id",
           loader:({params})=>{
             return fetch(`http://localhost:3000/roommates/${params.id}`)
           },
           Component:RommateDetails
-
         }
+        
     ]
   },
 ]);

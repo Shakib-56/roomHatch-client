@@ -6,6 +6,7 @@ import { MdDelete } from 'react-icons/md';
 
 const Mylistings = () => {
     const roommates=useLoaderData();
+    console.log(roommates);
     const {user}=useContext(AuthContext)
     const userAddedRoommateDatas = roommates.filter(
     (roommate) => roommate.email === user?.email
@@ -42,7 +43,7 @@ const Mylistings = () => {
                 <td>{roommate.location || 'N/A'}</td>
                 <td colSpan={2} >
                   <Link
-                    to={`/roommates/${roommate._id}`}
+                    to={`/update-roommateDetails/${roommate._id}`}
                     className="btn btn-sm  bg-blue-400 text-white "
                   >
                     Update 

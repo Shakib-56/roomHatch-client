@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddRoommate from "../Components/AddRoommate/AddRoommate";
 import Mylistings from "../Components/MyListings/Mylistings";
 import RommateDetails from "../Components/RommateDetails/RommateDetails";
+import UpdateRommateDetails from "../Components/UpdateRommateDetails/UpdateRommateDetails";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,14 @@ const router = createBrowserRouter([
             return fetch(`http://localhost:3000/roommates/${params.id}`)
           },
           Component:RommateDetails
-        }
+        },
+        {
+           path:"/update-roommateDetails/:id",
+           loader:({params})=>{
+            return fetch(`http://localhost:3000/roommates/${params.id}`)
+          },
+           element:<PrivateRoute><UpdateRommateDetails></UpdateRommateDetails></PrivateRoute>
+        },
         
     ]
   },

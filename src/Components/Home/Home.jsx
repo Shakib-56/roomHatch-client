@@ -3,6 +3,7 @@ import Banner from '../Banner/Banner';
 import HowItWorks from '../ExtraSection/HowItWorks';
 import FeaturedRoommatePost from '../FeaturedPost/FeaturedRoommatePost';
 import { useLoaderData } from 'react-router';
+import TastimonialSection from '../ExtraSection/TastimonialSection';
 
 const Home = () => {
     const featuredPostData=useLoaderData();
@@ -12,6 +13,7 @@ const Home = () => {
             <Banner></Banner>
             <HowItWorks></HowItWorks>
             <FeaturedRoommatePost roommates={featuredPostData}></FeaturedRoommatePost>
+            <TastimonialSection></TastimonialSection>
         </div>
     );
 };

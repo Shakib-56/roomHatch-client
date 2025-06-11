@@ -7,11 +7,7 @@ import { FaInstagram } from 'react-icons/fa';
 const Footer = () => {
     return (
         <div>
-            <div className='flex flex-col  bg-red-400 py-20 space-y-2 items-center'>
-                <h2 className='text-xl text-white'>Don't do college alone.</h2>
-                <NavLink className="flex  max-w-4xl  items-center justify-center gap-2 px-20 bg-white  rounded py-4 shadow-sm text-red-600" to={"/"}> Find roommate <FaArrowRight />
-</NavLink>
-            </div>
+            
             <footer className="footer px-6 py-4  md:px-20 bg-black sm:footer-horizontal  text-neutral-content md:p-10">
   <aside>
     <img className='h-15 max-w-80' src={logoFooter} alt="" />

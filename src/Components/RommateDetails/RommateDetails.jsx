@@ -47,7 +47,7 @@ const RommateDetails = () => {
     <div className='max-w-4xl px-4 md:px-20 mx-auto py-10'>
       <div className='p-10 space-y-2 text-center rounded-t-xl shadow-sm flex flex-col justify-center items-center border-b-2 border-b-red-600 bg-red-100'>
         <img className='h-40 w-40 object-cover rounded-full' src={photo} alt={name} />
-        <p className='text-2xl mt-4 font-bold'>{name}</p>
+        <p className='text-2xl mt-4 text-gray-600 font-bold'>{name}</p>
         <p className='text-gray-700'>{likeCount} people interested in</p>
 
         {!isOwnPost && (
@@ -64,7 +64,7 @@ const RommateDetails = () => {
         </p>
         <div className='p-4 rounded shadow-sm'>
           <p className='flex items-center gap-2'><MdLocationCity className='text-red-600' size={25} /> 
-            <strong>Location</strong>: <span className='text-gray-800'>{location}</span>
+            <strong>Location</strong>: <span>{location}</span>
           </p>
           <p>💰 <strong>Rent</strong>: {rent} Tk</p>
           <p>📅 <strong>Availability</strong>: {availability}</p>

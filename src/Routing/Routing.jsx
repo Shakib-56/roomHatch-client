@@ -30,6 +30,7 @@ const router = createBrowserRouter([
             Component:SignUp
         },{
            path:"browse",
+           loader:()=>fetch(`http://localhost:3000/roommates`),
            Component:BrowseListing, 
         },{
            path:"add-roommate",

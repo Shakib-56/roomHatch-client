@@ -4,6 +4,7 @@ import bannerImage2 from "../../assets/roommates-spending-time-together.jpg"
 import bannerImage3 from "../../assets/happy-friends-smiling-camera.jpg"
 import bannerImage4 from "../../assets/side-view-roommates-spending-time-indoors.jpg"
 import { GoDotFill } from 'react-icons/go';
+import { Link } from 'react-router';
       const linkClass = ({ isActive }) =>{return isActive ? " text-white font-semibold ": "text-gray-700 hover:text-red-500 px-3 py-2"};
 
 
@@ -14,7 +15,7 @@ const Banner = () => {
         //     <h1 className='text-3xl text-center max-w-7xl font-bold px-70'>No More Stranger Danger – Verified Profiles, Background Checks & Transparent Reviews for Roommates Who Pay Rent On Time.</h1>
         // </div>
         <div>
-  <div className="carousel  w-full md:min-h-screen ">
+  <div className="carousel  w-full  lg:min-h-screen ">
   <div id="item1" className="carousel-item relative w-full h-full ">
       <img
       src={bannerImage}
@@ -27,7 +28,7 @@ const Banner = () => {
             Safe, verified profiles with background checks for peace of mind
         </p>
         <div className=' flex md:items-start items-center justify-center md:justify-start '>
-          <button className='px-4 md:px-10 py-4 bg-red-600 text-white  text-xl'>Browse Roommates</button>
+          <Link className='px-4 md:px-10 py-4 bg-red-600 text-white  text-xl'>Browse Roommates</Link>
         </div>
         
       </div>

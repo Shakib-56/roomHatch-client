@@ -49,13 +49,19 @@ const Navbar = () => {
         <>
           <NavLink className={linkClass} to="/add-roommate">Add Roommate</NavLink>
           <NavLink className={linkClass} to="/my-listings">My Listing</NavLink>
+          <button
+          onClick={handleSignOut}
+          className="btn btn-sm bg-red-600 text-white hover:bg-red-700 w-full lg:hidden mt-2"
+        >
+          <FaSignOutAlt className="mr-1" /> Log out
+        </button>
         </>
       )}
     </>
   );
 
   return (
-    <div className="flex justify-evenly items-center px-2 gap-2 space-x-4 md:px-20 md:py-4 bg-base-100 shadow-sm z-50">
+    <div className="flex justify-evenly items-center px-2 py-2 border-b-1 border-b-red-600 gap-2 space-x-4 md:px-20 md:py-4 bg-base-100 shadow-sm z-50">
       <div className="flex items-center gap-4">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden text-red-600 border border-red-600">
@@ -92,7 +98,7 @@ const Navbar = () => {
             <div className="absolute top-10 left-0  bg-black text-white text-xs px-2 py-1 rounded hidden group-hover:block whitespace-nowrap">
               {user.displayName}
             </div>
-            <button onClick={handleSignOut} className="btn btn-sm bg-red-600 text-white hover:bg-red-700">
+            <button onClick={handleSignOut} className="btn btn-sm hidden lg:flex flex-row bg-red-600 text-white hover:bg-red-700">
               <FaSignOutAlt className="mr-1" /> Log out
             </button>
           </div>

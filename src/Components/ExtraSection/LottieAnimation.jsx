@@ -11,7 +11,7 @@ const LottieAnimation = () => {
 
   const { View } = useLottie(options);
 
-  return <div style={{ width: 200, height: 200 }}>{View}</div>;
+  return <div style={{ width: 100, height: 100 }}>{View}</div>;
 };
 
 export default LottieAnimation;

@@ -28,9 +28,8 @@ const Banner = () => {
             Safe, verified profiles with background checks for peace of mind
         </p>
         <div className=' flex md:items-start items-center justify-center md:justify-start '>
-          <Link className='px-4 md:px-10 py-4 bg-red-600 text-white  text-xl'>Browse Roommates</Link>
+          <Link to={"/browse"} className='px-4 md:px-10 py-4 bg-red-600 text-white  text-xl'>Browse Roommates</Link>
         </div>
-        
       </div>
   </div>
   <div id="item2" className="carousel-item relative w-full h-full ">
@@ -45,7 +44,7 @@ const Banner = () => {
             Match based on lifestyle, habits, and preferences.
         </p>
         <div className=' flex md:items-start items-center justify-center md:justify-start'>
-          <button className='px-4 md:px-10 py-4 bg-red-600 text-white  text-center text-xl'>Browse Roommates</button>
+          <Link  to={"/browse"} className='px-4 md:px-10 py-4 bg-red-600 text-white  text-center text-xl'>Browse Roommates</Link>
         </div>
       </div>
   </div>
@@ -77,7 +76,7 @@ const Banner = () => {
             Transparent reviews and reliable roommates
         </p>
         <div className='flex md:items-start items-center justify-center md:justify-start'>
-          <button className='px-4 md:px-10 py-4 bg-red-600 text-white  text-center text-xl'>Browse Roommates</button>
+          <Link className='px-4 md:px-10 py-4 bg-red-600 text-white  text-center text-xl'>Browse Roommates</Link>
         </div>
       </div>
   </div>

@@ -11,6 +11,11 @@ import AddRoommate from "../Components/AddRoommate/AddRoommate";
 import Mylistings from "../Components/MyListings/Mylistings";
 import RommateDetails from "../Components/RommateDetails/RommateDetails";
 import UpdateRommateDetails from "../Components/UpdateRommateDetails/UpdateRommateDetails";
+import PageError from "../Components/ErrorPage/PageError";
+import Loaders from "../Components/Loaders/Loaders";
+import BrowseListings from "../Components/BrowseListing/BrowseListing";
+import ErrorLayout from "../Components/ErrorPage/ErrorLayout";
+import RouteError from "../Components/ErrorPage/RouteError";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +29,6 @@ const router = createBrowserRouter([
         },
         {
             path:"login",
-            
             Component:Login
         },{
             path:"signUp",
@@ -32,7 +36,7 @@ const router = createBrowserRouter([
         },{
            path:"browse",
            loader:()=>fetch(`http://localhost:3000/roommates`),
-           Component:BrowseListing, 
+          Component:BrowseListings
         },{
            path:"add-roommate",
            element:<PrivateRoute><AddRoommate></AddRoommate></PrivateRoute>
@@ -47,7 +51,8 @@ const router = createBrowserRouter([
           loader:({params})=>{
             return fetch(`http://localhost:3000/roommates/${params.id}`)
           },
-          Component:RommateDetails
+          element:<RommateDetails></RommateDetails>,
+          errorElement:<ErrorLayout><RouteError></RouteError></ErrorLayout>
         },
         {
            path:"/update-roommateDetails/:id",
@@ -56,9 +61,17 @@ const router = createBrowserRouter([
           },
            element:<PrivateRoute><UpdateRommateDetails></UpdateRommateDetails></PrivateRoute>
         },
+        {
+          path:"*",
+          element:<ErrorLayout><PageError></PageError></ErrorLayout>
+        }
         
     ]
   },
+  {
+    path:"*",
+    element:<PageError></PageError>
+  }
 ]);
 
 export default router;

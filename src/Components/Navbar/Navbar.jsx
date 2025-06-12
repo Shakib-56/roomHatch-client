@@ -43,26 +43,47 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <NavLink className={linkClass} to="/">Home</NavLink>
-      <NavLink className={linkClass} to="/browse">Browse Listing</NavLink>
-      {user && (
-        <>
-          <NavLink className={linkClass} to="/add-roommate">Add Roommate</NavLink>
-          <NavLink className={linkClass} to="/my-listings">My Listing</NavLink>
-          <button
-          onClick={handleSignOut}
-          className="btn btn-sm bg-red-600 text-white hover:bg-red-700 w-full lg:hidden mt-2"
-        >
-          <FaSignOutAlt className="mr-1" /> Log out
-        </button>
-        </>
-      )}
-    </>
+  <NavLink className={linkClass} to="/">Home</NavLink>
+  <NavLink className={linkClass} to="/browse">Browse Listing</NavLink>
+  
+  {/* Mobile-only buttons */}
+  <div className="space-y-2 items-start lg:hidden flex flex-col">
+    {user ? (
+      // Show when user is logged in (mobile)
+      <>
+        <NavLink className={linkClass} to="/add-roommate">Add Roommate</NavLink>
+        <NavLink className={linkClass} to="/my-listings">My Listing</NavLink>
+        <button onClick={handleSignOut} className="btn btn-sm  w-full flex flex-row bg-red-600 text-white hover:bg-red-700">
+              <FaSignOutAlt className="mr-1" /> Log out
+            </button>
+      </>
+    ) : (
+      // Show when user is not logged in (mobile)
+      <>
+        <NavLink to="/login" className="btn btn-sm w-full bg-red-600 text-white hover:bg-red-700">
+          Login
+        </NavLink>
+        <NavLink to="/signUp" className="btn btn-sm w-full bg-red-600 text-white hover:bg-red-700">
+          Signup
+        </NavLink>
+      </>
+    )}
+  </div>
+
+  {/* Desktop-only items for logged in users */}
+  {user && (
+    <div className="hidden lg:flex lg:space-x-4">
+      <NavLink className={linkClass} to="/add-roommate">Add Roommate</NavLink>
+      <NavLink className={linkClass} to="/my-listings">My Listing</NavLink>
+      
+    </div>
+  )}
+</>
   );
 
   return (
-    <div className="flex justify-evenly items-center px-2 py-2 border-b-1 border-b-red-600 gap-2 space-x-4 md:px-20 md:py-4 bg-base-100 shadow-sm z-50">
-      <div className="flex items-center gap-4">
+    <div className="flex  justify-around  lg:justify-evenly  lg:items-center px-2 py-2 border-b-1 border-b-red-600 gap-2 space-x-4 md:px-20 md:py-4 bg-base-100 shadow-sm z-50">
+      <div className="flex items-center justify-between gap-4">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden text-red-600 border border-red-600">
             <RxHamburgerMenu size={20} />
@@ -71,7 +92,7 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <NavLink to="/" className="w-32 md:w-48">
+        <NavLink to="/" className="w-45 pl-6 md:w-48">
           <img src={logo} alt="logo" className="h-full object-contain" />
         </NavLink>
       </div>
@@ -83,7 +104,6 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end flex items-center gap-4">
-        {/* Theme toggle */}
         <button className="btn btn-sm btn-ghost rounded-full bg-red-600 text-white" onClick={toggleTheme}>
           {theme === 'light' ? <FaMoon size={18} /> : <FaSun size={18} />}
         </button>
@@ -103,7 +123,7 @@ const Navbar = () => {
             </button>
           </div>
         ) : (
-          <div className="space-x-2">
+          <div className="space-x-2 hidden lg:flex px-2">
             <NavLink to="/login" className="btn btn-sm bg-red-600 text-white hover:bg-red-700">Login</NavLink>
             <NavLink to="/signUp" className="btn btn-sm bg-red-600 text-white hover:bg-red-700">Signup</NavLink>
           </div>

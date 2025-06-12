@@ -2,13 +2,8 @@ import React from 'react';
 import addRommateBg from "../../assets/add-roomate-2.png"
 import { use } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
-import { useLoaderData } from 'react-router';
 const AddRoommate = () => {
   const {user}=use(AuthContext)
-  console.log(user);
-
-  
-  
   const handleAddRoommate=(e)=>{
     e.preventDefault();
     const form=e.target;
@@ -28,12 +23,12 @@ const AddRoommate = () => {
     });
   }
     return (
-        <div className='p-24 max-w-7xl mx-auto bg-white shadow-sm rounded-xl bg-no-repeat   my-10'>
+        <div className=' px-4  lg:px-20 py-10 max-w-7xl mx-auto bg-white shadow-sm rounded-xl bg-no-repeat   my-10'>
           <div>
             <img className='w-full bg-cover rounded-t-2xl' src={addRommateBg} alt="" />
           </div>
-            <div className='p-12 text-center space-y-4'>
-            <h1 className="text-4xl font-extrabold text-center text-red-600 my-6">
+            <div className='px-12 lg:p-12 text-center space-y-4'>
+            <h1 className="text-2xl lg:text-4xl font-extrabold text-center text-red-600 my-6">
   🚪 Open Your Door to a Great Roommate!
 </h1>
 <p className="text-lg text-center text-gray-700 mb-8">

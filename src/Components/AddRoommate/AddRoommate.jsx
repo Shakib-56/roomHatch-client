@@ -9,16 +9,15 @@ const AddRoommate = () => {
     const form=e.target;
     const formData=new FormData(form);
     const newRoommate=Object.fromEntries(formData.entries());
-    console.log(newRoommate);
+    
     //send data on server
-    fetch("http://localhost:3000/roommates",{
+    fetch("https://room-hatch-server.vercel.app/",{
       method:"POST",
       headers:{
         "content-type":"application/json"
       },
       body:JSON.stringify(newRoommate)
     }).then(res=>res.json()).then(data=>{
-      console.log(data.insertedId);
 
     });
   }

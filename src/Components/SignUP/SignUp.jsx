@@ -15,7 +15,6 @@ const SignUp = () => {
   const navigate=useNavigate();
 
 const {createUser,SignInWithGoogle,setUser,user}=use(AuthContext);
-console.log(user);
 const handleSignUp=(e)=>{
      e.preventDefault();
         const form=e.target;
@@ -25,9 +24,8 @@ const handleSignUp=(e)=>{
         const photoURL=form.photoURL.value;
         const formData=new FormData(form);
         const newUser=Object.fromEntries(formData.entries());
-        console.log(newUser);
         // create user
-        fetch("http://localhost:3000/users",{
+        fetch("https://room-hatch-server.vercel.app/",{
           method:"POST",
           headers:{
             "content-type":"application/json"
@@ -54,7 +52,6 @@ const handleSignUp=(e)=>{
 
 
         createUser(email,password).then(result=>{
-      console.log(result);
        updateProfile(auth.currentUser, {
           displayName:name, photoURL:photoURL
           })
@@ -71,7 +68,7 @@ const handleSignUp=(e)=>{
             email: googleUser.email,
             photoURL: googleUser.photoURL,
     };
-      fetch("http://localhost:3000/users",{
+      fetch("https://room-hatch-server.vercel.app/",{
          method:"POST",
           headers:{
             "content-type":"application/json"
@@ -89,7 +86,7 @@ const handleSignUp=(e)=>{
 
       setUser(newUser);
 
-    }).then(err=>console.log(err));
+    }).then(err=>setErrorMessage(err.message));
   };
     return (
         <div>

@@ -5,6 +5,7 @@ import { LuMoveRight } from 'react-icons/lu';
 import { useState } from 'react';
 
 const FeaturedRoommatePost = ({roommates}) => {
+  console.log(roommates);
   const [showAll,setShowAll]=useState(false);
   const availableRoommates = roommates.filter((roommate) => roommate.availability === "available");
   const roommateToShow = showAll ? availableRoommates : availableRoommates.slice(0, 6);

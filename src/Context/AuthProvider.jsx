@@ -9,7 +9,6 @@ import { useState } from 'react';
 const AuthProvider = ({children}) => {
     const [user,setUser]=useState(null);
     const provider= new GoogleAuthProvider();
-    console.log(user);
     const createUser=(email,password)=>{
         return createUserWithEmailAndPassword(auth,email,password)
     }
@@ -24,7 +23,6 @@ const AuthProvider = ({children}) => {
     }
      useEffect(()=>{
         const unSubscribe=onAuthStateChanged(auth,currentUser=>{
-            console.log("Current User inside useEffect on auth state changes",currentUser)
             setUser(currentUser);
         })
         return ()=>{

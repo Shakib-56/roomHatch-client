@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 import { useLoaderData } from 'react-router';
 const UpdateRommateDetails = () => {
   const {user}=use(AuthContext)
-  console.log(user);
 const {_id,availability,contact,description,lifestyle,location,rent,roomType,title}=useLoaderData();
   
   
@@ -15,9 +14,8 @@ const {_id,availability,contact,description,lifestyle,location,rent,roomType,tit
     const form=e.target;
     const formData=new FormData(form);
     const newRoommate=Object.fromEntries(formData.entries());
-    console.log(newRoommate);
     // send updated coffee to the db
-        fetch(`http://localhost:3000/roommates/${_id}`,{
+        fetch(`https://room-hatch-server.vercel.app/${_id}`,{
            method:"PUT",
            headers:{
             'content-type':"application/json"

@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     children:[
         {
             index:true,
-            loader:()=>fetch(`http://localhost:3000/roommates`),
+            loader:()=>fetch(`https://room-hatch-server.vercel.app/roommates`),
             Component:Home
         },
         {
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
             Component:SignUp
         },{
            path:"browse",
-           loader:()=>fetch(`http://localhost:3000/roommates`),
+           loader:()=>fetch(`https://room-hatch-server.vercel.app/roommates`),
           Component:BrowseListings
         },{
            path:"add-roommate",
@@ -43,13 +43,13 @@ const router = createBrowserRouter([
         },
         {
            path:"my-listings",
-           loader:()=>fetch(`http://localhost:3000/roommates`),
+           loader:()=>fetch(`https://room-hatch-server.vercel.app/roommates`),
            element:<PrivateRoute><Mylistings></Mylistings></PrivateRoute>
         },
         {
           path:"/roommates/:id",
           loader:({params})=>{
-            return fetch(`http://localhost:3000/roommates/${params.id}`)
+            return fetch(`https://room-hatch-server.vercel.app/roommates/${params.id}`)
           },
           element:<RommateDetails></RommateDetails>,
           errorElement:<ErrorLayout><RouteError></RouteError></ErrorLayout>
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         {
            path:"/update-roommateDetails/:id",
            loader:({params})=>{
-            return fetch(`http://localhost:3000/roommates/${params.id}`)
+            return fetch(`https://room-hatch-server.vercel.app/roommates/${params.id}`)
           },
            element:<PrivateRoute><UpdateRommateDetails></UpdateRommateDetails></PrivateRoute>
         },

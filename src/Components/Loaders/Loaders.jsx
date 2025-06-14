@@ -1,11 +1,11 @@
 import React from 'react';
+import LottieAnimation from '../ExtraSection/LottieAnimation';
 
 const Loaders = () => {
     return (
-        <div>
-            <span className="loading loading-bars loading-xl"></span>
-
-        </div>
+        <div className='max-w-7xl mx-auto flex justify-center items-center p-6'>
+                        <LottieAnimation></LottieAnimation>
+            </div>
     );
 };
 

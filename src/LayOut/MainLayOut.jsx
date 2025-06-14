@@ -16,9 +16,7 @@ const MainLayOut = () => {
             {!isErrorPage && <Header></Header>}
             <main>
                 {isLoading ? (
-                    <div className='max-w-7xl mx-auto flex justify-center items-center p-6'>
-                        <LottieAnimation></LottieAnimation>
-                    </div>
+                    <Loaders></Loaders>
                 ):(
              <Outlet></Outlet>
 

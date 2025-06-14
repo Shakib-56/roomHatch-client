@@ -1,8 +1,8 @@
 import React from 'react';
 import FeaturedRoommateSinglePost from './FeaturedRoommateSinglePost';
-import featuredPostBg from "../../assets/featuredPostSection-bg.png"
 import { LuMoveRight } from 'react-icons/lu';
 import { useState } from 'react';
+import featuredBg from "../../assets/changeFeaturedBg.png"
 
 const FeaturedRoommatePost = ({roommates}) => {
   const [showAll,setShowAll]=useState(false);
@@ -13,7 +13,7 @@ const FeaturedRoommatePost = ({roommates}) => {
     setShowAll(!showAll);
   }
     return (
-        <div className='max-w-full  bg-cover bg-no-repeat'style={{backgroundImage:`url(${featuredPostBg})`}}>
+        <div className='max-w-full  bg-cover bg-no-repeat' style={{backgroundImage:`url(${featuredBg })`}}>
              <section className="lg:py-10 px-4 lg:px-20 w-full max-auto">
       <h2 className=" text-2xl  md:text-4xl  font-bold text-center  text-red-600 py-6">Featured Roommates</h2>
       <div className="grid max-w-7xl space-y-3 mx-auto    grid-cols-1 md:gap-4 lg:gap-4 md:grid-cols-2 lg:grid-cols-3">

@@ -25,8 +25,8 @@ const GlidCarousal = () => {
         type: 'carousel',
         focusAt: 'center',
         perView: 3,
-        autoplay: 3000,
-        animationDuration: 700,
+        autoplay: 5000,
+        animationDuration: 900,
         gap: 24,
         classes: {
           activeNav: '[&>*]:bg-slate-700',

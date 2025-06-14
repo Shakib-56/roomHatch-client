@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import addRommateBg from "../../assets/add-roomate-2.png"
-import { use } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
+import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 const AddRoommate = () => {
-  const {user}=use(AuthContext)
+  const {user}=useContext(AuthContext);
+
+    const navigation=useNavigate();
+
   const handleAddRoommate=(e)=>{
     e.preventDefault();
     const form=e.target;
@@ -11,13 +15,17 @@ const AddRoommate = () => {
     const newRoommate=Object.fromEntries(formData.entries());
     
     //send data on server
-    fetch("https://room-hatch-server.vercel.app/",{
+    fetch("https://room-hatch-server.vercel.app/roommates",{
       method:"POST",
       headers:{
         "content-type":"application/json"
       },
       body:JSON.stringify(newRoommate)
     }).then(res=>res.json()).then(data=>{
+      if(data.insertedId){
+   Swal.fire("Success", "Roommate listing added!", "success");
+   navigation("/my-listings"); 
+}
 
     });
   }

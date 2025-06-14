@@ -4,8 +4,10 @@ import { use } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import Swal from 'sweetalert2';
 import { useLoaderData } from 'react-router';
+import { useNavigate } from 'react-router';
 const UpdateRommateDetails = () => {
   const {user}=use(AuthContext)
+  const navigation=useNavigate();
 const {_id,availability,contact,description,lifestyle,location,rent,roomType,title}=useLoaderData();
   
   
@@ -30,6 +32,8 @@ const {_id,availability,contact,description,lifestyle,location,rent,roomType,tit
                 showConfirmButton: false,
                 timer: 1500});
             }
+            navigation("/browse")
+
         });
   }
     return (
@@ -115,7 +119,7 @@ const {_id,availability,contact,description,lifestyle,location,rent,roomType,tit
         <label className="label text-xl">Description</label>
         <textarea type="text" className="bg-white border-none w-full border"  name='description' defaultValue={description} rows={10}></textarea>
         </fieldset>
-        <input className='btn w-full bg-red-600 text-white border border-red-200 mt-4' type="submit" value="Update Roommate" />
+        <input  className='btn w-full bg-red-600 text-white border border-red-200 mt-4' type="submit" value="Update Roommate" />
         </div>
             </form>
            

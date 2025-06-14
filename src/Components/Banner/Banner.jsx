@@ -60,7 +60,7 @@ const Banner = () => {
         <p className='text-white text-2xl text-center md:text-start px-4 '>
         Thousands of successful matches and counting        </p>
        <div className='flex md:items-start items-center justify-center md:justify-start'>
-          <button className='px-4 md:px-10 py-4 bg-red-600 text-white  text-center text-xl'>Browse Roommates</button>
+          <Link to={"/browse"} className='px-4 md:px-10 py-4 bg-red-600 text-white  text-center text-xl'>Browse Roommates</Link>
         </div>
       </div>
   </div>
@@ -76,7 +76,7 @@ const Banner = () => {
             Transparent reviews and reliable roommates
         </p>
         <div className='flex md:items-start items-center justify-center md:justify-start'>
-          <Link className='px-4 md:px-10 py-4 bg-red-600 text-white  text-center text-xl'>Browse Roommates</Link>
+          <Link to={"/browse"} className='px-4 md:px-10 py-4 bg-red-600 text-white  text-center text-xl'>Browse Roommates</Link>
         </div>
       </div>
   </div>

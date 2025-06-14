@@ -45,7 +45,7 @@ const GlidCarousal = () => {
 
   return (
     <div className=' bg-cover p-10 bg-center w-full h-full' style={{backgroundImage:`url(${bgTestiMonial})`}}>
-        <h2 className='text-4xl text-center font-bold text-red-600'>Testimonials</h2>
+        <h2 className='text-4xl text-center py-4 font-bold text-red-600'>Testimonials</h2>
          <div className="relative   mx-auto   lg:px-20 lg:py-15 glide-05 " ref={glideRef}>
       {/* Slides */}
       <div className="overflow-hidden  " data-glide-el="track">

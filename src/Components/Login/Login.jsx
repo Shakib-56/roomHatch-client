@@ -73,7 +73,7 @@ const Login = () => {
     SignInWithGoogle()
       .then((result) => {
         setUser(result.user);
-        navigate("/add-roommate");
+        navigate("/");
       })
       .catch((err) => setErrorMessage(err.message));
   };
